@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.m3ewidgets"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.m3ewidgets"
