@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">M3E Widgets</string>
+    <string name="weather_widget_desc">Current weather and today\'s high/low</string>
+    <string name="health_widget_desc">Steps, heart rate and sleep from Health Connect</string>
+</resources>
