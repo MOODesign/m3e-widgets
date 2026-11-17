@@ -50,6 +50,7 @@ class HealthWidgetReceiver : GlanceAppWidgetReceiver() {
 
 @Composable
 private fun HealthContent(h: HealthData?) {
+    val context = androidx.glance.LocalContext.current
     val c = GlanceTheme.colors
     Box(
         modifier = GlanceModifier
@@ -57,7 +58,7 @@ private fun HealthContent(h: HealthData?) {
             .background(c.tertiaryContainer)
             .cornerRadius(WidgetCorner)
             .padding(14.dp)
-            .clickable(actionStartActivity<MainActivity>()),
+            .clickable(actionStartActivity(android.content.Intent(context, MainActivity::class.java))),
     ) {
         Column(modifier = GlanceModifier.fillMaxSize()) {
             Row(

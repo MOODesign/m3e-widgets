@@ -41,6 +41,7 @@ class WeatherWidgetReceiver : GlanceAppWidgetReceiver() {
 
 @Composable
 private fun WeatherContent(w: WeatherData?) {
+    val context = androidx.glance.LocalContext.current
     val c = GlanceTheme.colors
     Box(
         modifier = GlanceModifier
@@ -48,7 +49,7 @@ private fun WeatherContent(w: WeatherData?) {
             .background(c.primaryContainer)
             .cornerRadius(WidgetCorner)
             .padding(18.dp)
-            .clickable(actionStartActivity<MainActivity>()),
+            .clickable(actionStartActivity(android.content.Intent(context, MainActivity::class.java))),
     ) {
         if (w == null) {
             Column(modifier = GlanceModifier.fillMaxSize(), verticalAlignment = Alignment.CenterVertically) {
