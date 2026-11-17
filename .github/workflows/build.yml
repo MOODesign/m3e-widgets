@@ -14,7 +14,15 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.10.2
-      - run: gradle assembleDebug --no-daemon
+      - name: Build
+        run: |
+          set +e
+          gradle assembleDebug --no-daemon --console=plain 2>&1 | tee build.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            grep -E "^e: |error:|What went wrong|Could not|A problem occurred|> " build.log | head -n 9 | sed 's/^/::error::/' | cut -c1-400
+          fi
+          exit $status
       - uses: actions/upload-artifact@v4
         with:
           name: m3e-widgets-apk
